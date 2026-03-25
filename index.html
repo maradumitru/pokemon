@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pokemon Site</title>
+  <title>Pokemon Evolution Site</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,11 +93,12 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
-    <div id="bubble" class="bubble">Hi Ricky</div>
-    <img id="pokemon" src="pokemon.png" alt="Pokemon">
+    <div id="bubble" class="bubble">click me</div>
+
+    <img id="pokemon" src="stage1.jpg" alt="Pokemon evolution stage">
+
     <div class="click-text">click me &lt;3</div>
   </div>
 
@@ -105,12 +106,35 @@
     const pokemon = document.getElementById("pokemon");
     const bubble = document.getElementById("bubble");
 
+    const stages = [
+      {
+        image: "stage1.jpg",
+        message: "hi ricky"
+      },
+      {
+        image: "stage2.jpg",
+        message: "how are you"
+      },
+      {
+        image: "stage3.jpg",
+        message: "ily"
+      }
+    ];
+
+    let currentStage = 0;
+
     pokemon.onclick = function () {
       bubble.classList.add("show");
+      bubble.textContent = stages[currentStage].message;
+      pokemon.src = stages[currentStage].image;
 
       pokemon.classList.remove("bounce");
       void pokemon.offsetWidth;
       pokemon.classList.add("bounce");
+
+      if (currentStage < stages.length - 1) {
+        currentStage++;
+      }
     };
   </script>
 </body>
